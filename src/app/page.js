@@ -6,6 +6,7 @@ import About from "@/components/About";
 import TabSection from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
 
 export default function Home() {
   return (
@@ -35,14 +36,16 @@ export default function Home() {
 
       <section
         id="experience"
-        className="py-20 flex items-center justify-center bg-gray-700 text-white"
+        className="py-20 bg-gray-700 text-white flex justify-center"
       >
-        <h2 className="text-3xl">Experience</h2>
+        <div className="w-full max-w-4xl px-4">
+          <Experience />
+        </div>
       </section>
 
       <section
         id="projects"
-        className="bg-gray-600 text-white"
+        className="flex items-center justify-center bg-gray-900 text-white"
       >
         <Projects />
       </section>
