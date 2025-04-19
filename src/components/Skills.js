@@ -1,32 +1,32 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Languages from './Languages';
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Languages from "./Languages";
 
 const TabSection = () => {
-  const [activeTab, setActiveTab] = useState('skills');
+  const [activeTab, setActiveTab] = useState("skills");
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
 
   const tabs = [
-    { id: 'skills', label: 'Skills' },
-    { id: 'languages', label: 'Programming Languages' },
-    { id: 'education', label: 'Education' },
+    { id: "skills", label: "Skills" },
+    { id: "languages", label: "Programming Languages" },
+    { id: "education", label: "Education" },
   ];
 
   const tabContent = {
     skills: (
       <div className="flex flex-wrap justify-center gap-6">
         {[
-          'Problem Solving',
-          'Web Development',
-          'Version Control (Git)',
-          'Team Collaboration',
-          'Responsive Design',
-          'Debugging',
-          'UI/UX Awareness',
-          'Testing & QA',
+          "Problem Solving",
+          "Web Development",
+          "Version Control (Git)",
+          "Team Collaboration",
+          "Responsive Design",
+          "Debugging",
+          "UI/UX Awareness",
+          "Testing & QA",
         ].map((skill) => (
           <div
             key={skill}
@@ -49,7 +49,7 @@ const TabSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -91,10 +91,10 @@ const TabSection = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`relative px-6 py-3 text-lg font-medium transition-colors duration-300 ease-in-out focus:outline-none
                     ${
-                    activeTab === tab.id
-                      ? 'text-blue-600'
-                      : 'text-gray-500 hover:text-blue-500'
-                  }`}
+                      activeTab === tab.id
+                        ? "text-blue-600"
+                        : "text-gray-500 hover:text-blue-500"
+                    }`}
                 >
                   {tab.label}
                   {activeTab === tab.id && (
