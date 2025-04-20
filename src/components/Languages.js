@@ -49,7 +49,19 @@ const technologies = [
   },
   {
     name: "MySQL",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain.svg",
+    src: "/mysql-logo-svgrepo-com.svg",
+  },
+  {
+    name: "VueJs",
+    src: "/vue-svgrepo-com.svg",
+  },
+  {
+    name: "C++",
+    src: "/c.svg",
+  },
+  {
+    name: "PHP",
+    src: "/php-svgrepo-com.svg",
   },
   {
     name: "Git",
@@ -59,11 +71,11 @@ const technologies = [
 
 export default function Languages() {
   return (
-    <div className="w-11/12 max-w-5xl mx-auto mt-10 flex flex-wrap justify-center text-black gap-4">
+    <div className="w-11/12 max-w-5xl mx-auto mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-black">
       {technologies.map((tech, index) => (
         <div
           key={index}
-          className="py-2 px-4 bg-gray-50 rounded-lg flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer w-40 md:w-48 shadow-sm animate-float"
+          className="py-2 px-4 bg-gray-50 rounded-lg flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer shadow-sm animate-float"
         >
           <div className="relative w-12 h-12">
             <Image
@@ -80,3 +92,4 @@ export default function Languages() {
     </div>
   );
 }
+

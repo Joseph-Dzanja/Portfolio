@@ -46,6 +46,13 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript"],
     link: "https://joseph-dzanja.github.io/Tic-Tac-Toe/",
   },
+  {
+    id: 7,
+    name: "Old Portfolio Website",
+    description: "My former portfolio website built with regular HTML, CSS and JavaScript",
+    stack: ["HTML", "CSS", "JavaScript"],
+    link: "https://jhdzanja.netlify.app",
+  },
 ];
 
 
