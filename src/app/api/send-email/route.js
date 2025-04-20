@@ -12,7 +12,6 @@ export async function POST(request) {
       pass: process.env.EMAIL_PASS, // App password, not your real Gmail password!
     },
   });
-  console.log(process.env.EMAIL_PASS)
   const mailOptions = {
     from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`, // Always your email
     to: process.env.EMAIL_USER,
