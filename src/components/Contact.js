@@ -1,6 +1,49 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: `Subject: ${form.subject}\n\n${form.message}`,
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("Failed to send. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("Something went wrong.");
+    }
+  };
+
   return (
     <div className="flex justify-center flex-col md:flex-row w-4/5 m-auto py-16 gap-12">
       {/* Contact Info */}
@@ -22,24 +65,37 @@ export default function Contact() {
 
       {/* Contact Form */}
       <form
+        onSubmit={handleSubmit}
         className="flex flex-col gap-4 w-full max-w-lg md:shadow-2xl md:p-3"
-        action="#"
       >
-        <h1 className="text-center">CONTACT FORM</h1>
+        <h1 className="text-center text-white font-semibold text-lg">
+          CONTACT FORM
+        </h1>
 
         <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
           type="text"
+          required
           className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
           placeholder="Name*"
         />
 
         <input
+          name="email"
+          value={form.email}
+          onChange={handleChange}
           type="email"
+          required
           className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
           placeholder="Email*"
         />
 
         <input
+          name="subject"
+          value={form.subject}
+          onChange={handleChange}
           type="text"
           className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
           placeholder="Subject"
@@ -47,8 +103,10 @@ export default function Contact() {
 
         <textarea
           name="message"
-          cols="30"
+          value={form.message}
+          onChange={handleChange}
           rows="6"
+          required
           className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 resize-none"
           placeholder="Message"
         ></textarea>
@@ -59,6 +117,10 @@ export default function Contact() {
         >
           Submit
         </button>
+
+        {status && (
+          <p className="text-center text-sm text-white mt-2">{status}</p>
+        )}
       </form>
     </div>
   );
