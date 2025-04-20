@@ -13,7 +13,7 @@ export async function POST(request) {
     },
   });
   const mailOptions = {
-    from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`, // Always your email
+    from: `"Portfolio Contact Form" `, // Always your email
     to: process.env.EMAIL_USER,
     subject: `Message from ${name}`,
     text: `Email: ${email}\n\n${message}`,
