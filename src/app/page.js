@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import TabSection from "@/components/Skills";
+import Expertise from "@/components/Expertise";
 import Contact from "@/components/Contact";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
@@ -31,12 +31,12 @@ export default function Home() {
       </section>
 
       <section id="skills" className="py-20 bg-gray-900 text-white">
-        <TabSection />
+        <Expertise />
       </section>
 
       <section
         id="experience"
-        className="py-20 bg-gray-700 text-white flex justify-center"
+        className="py-20 bg-gray-900 text-white flex justify-center"
       >
         <div className="w-full max-w-4xl px-4">
           <Experience />
