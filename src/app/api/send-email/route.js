@@ -13,12 +13,13 @@ export async function POST(request) {
     },
   });
   const mailOptions = {
-    from: `"Portfolio Contact Form" `, // Always your email
-    to: 'jhdzanja@gmail.com',
+    from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`, // Always your own Gmail
+    to: process.env.EMAIL_USER, // Your own Gmail again
     subject: `Message from ${name}`,
     text: `Email: ${email}\n\n${message}`,
-    replyTo: email, // This makes replies go to the user
+    replyTo: email, // Makes your reply go to the user who filled the form
   };
+  
 
   try {
     await transporter.sendMail(mailOptions);
