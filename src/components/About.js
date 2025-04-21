@@ -7,10 +7,10 @@ export default function About() {
         {/* Content */}
         <div className="flex-1 text-white space-y-4">
           <p>
-            I’m a Software Developer with a passion for
+            I’m a Software Developer and UI/UX Designer with a passion for
             building seamless digital experiences. I specialize in both
             front-end and back-end development, working with technologies like
-            JavaScript, React, Next.js, Vue, Node.js, and SQL to create dynamic and
+            JavaScript, React, Vue, Node.js, and SQL to create dynamic and
             user-friendly applications.
           </p>
           <p>

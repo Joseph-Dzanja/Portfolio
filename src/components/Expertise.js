@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import Skills from './Skills';
@@ -12,7 +12,7 @@ const Expertise = () => {
 
   const tabs = [
     { id: 'skills', label: 'Skills' },
-    { id: 'languages', label: 'Languages / Frameworks' },
+    { id: 'languages', label: 'Programming Languages' },
     { id: 'education', label: 'Education' },
   ];
 
@@ -43,38 +43,36 @@ const Expertise = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative px-6 py-3 text-lg font-medium transition-all duration-300 ease-in-out focus:outline-none
+              className={`relative px-6 py-3 text-lg font-medium transition-colors duration-300 ease-in-out focus:outline-none
                 ${
                   activeTab === tab.id
-                    ? 'text-blue-600 border-b-2 border-blue-600'
+                    ? 'text-blue-600'
                     : 'text-gray-500 hover:text-blue-500'
                 }`}
-              style={{
-                cursor: 'pointer', // Ensure the cursor is a pointer on hover
-              }}
             >
               {tab.label}
+              {activeTab === tab.id && (
+                <span className="absolute left-0 bottom-0 h-1 w-full bg-blue-600 rounded-full"></span>
+              )}
             </button>
           ))}
         </div>
       </FadeInOnScroll>
 
       <FadeInOnScroll delayOrder={2}>
-        <div className="text-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="text-center"
-            >
-              {renderTabContent()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <div className="text-center"><AnimatePresence mode="wait">
+  <motion.div
+    key={activeTab}
+    layout
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.4 }}
+    className="text-center"
+  >
+    {renderTabContent()}
+  </motion.div>
+</AnimatePresence></div>
       </FadeInOnScroll>
     </div>
   );

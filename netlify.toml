@@ -1,0 +1,2 @@
+[secrets]
+omit_paths = ["src/components/Contact.js", "src/components/Hero.js"]

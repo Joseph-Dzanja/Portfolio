@@ -67,10 +67,6 @@ const technologies = [
     name: "Git",
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg",
   },
-  {
-    name: "Next.js",
-    src: "/nextjs-icon-svgrepo-com.svg",
-  },
 ];
 
 export default function Languages() {

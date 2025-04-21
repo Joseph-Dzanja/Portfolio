@@ -5,13 +5,13 @@ import { CheckCircle } from 'lucide-react';
 const Skills = () => {
   const skills = [
     'Problem Solving',
-    'Full Stack Development',
+    'Web Development',
     'Version Control (Git)',
     'Team Collaboration',
     'Responsive Design',
-    'Cloud Services',
-    'UI/UX Design',
-    'Database Management',
+    'Debugging',
+    'UI/UX Awareness',
+    'Testing & QA',
   ];
 
   return (
