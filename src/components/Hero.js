@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <div className="max-w-2xl space-y-6 p-6 py-8 lg:backdrop-blur-sm lg:bg-black/30 rounded-xl">
+    <div className="max-w-2xl space-y-6 lg:p-6 lg:py-8 lg:backdrop-blur-sm lg:bg-black/30 rounded-xl">
       <p className="text-lg text-gray-300">Hi There!</p>
 
       <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
