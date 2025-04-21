@@ -10,7 +10,7 @@ import Experience from "@/components/Experience";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative bg-gray-900">
       <Navbar />
 
       <section
@@ -30,7 +30,10 @@ export default function Home() {
         <About />
       </section>
 
-      <section id="skills" className="py-20 bg-gray-900 text-white">
+      <section
+        id="skills"
+        className="py-20 bg-gray-900 text-white"
+      >
         <Expertise />
       </section>
 
@@ -52,7 +55,7 @@ export default function Home() {
 
       <section
         id="contact"
-        className="min-h-screen flex items-center bg-gray-500 text-white"
+        className="min-h-screen flex items-center bg-gray-800 text-white"
       >
         <Contact />
       </section>
