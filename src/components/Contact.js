@@ -78,7 +78,7 @@ export default function Contact() {
           onChange={handleChange}
           type="text"
           required
-          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
+          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
           placeholder="Name*"
         />
 
@@ -88,7 +88,7 @@ export default function Contact() {
           onChange={handleChange}
           type="email"
           required
-          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
+          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
           placeholder="Email*"
         />
 
@@ -97,7 +97,7 @@ export default function Contact() {
           value={form.subject}
           onChange={handleChange}
           type="text"
-          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600"
+          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
           placeholder="Subject"
         />
 
@@ -107,7 +107,7 @@ export default function Contact() {
           onChange={handleChange}
           rows="6"
           required
-          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 resize-none"
+          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 resize-none placeholder:text-gray-400"
           placeholder="Message"
         ></textarea>
 
