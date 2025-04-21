@@ -12,7 +12,7 @@ const Expertise = () => {
 
   const tabs = [
     { id: 'skills', label: 'Skills' },
-    { id: 'languages', label: 'Programming Languages' },
+    { id: 'languages', label: 'Languages / Frameworks' },
     { id: 'education', label: 'Education' },
   ];
 
@@ -49,6 +49,7 @@ const Expertise = () => {
                     ? 'text-blue-600'
                     : 'text-gray-500 hover:text-blue-500'
                 }`}
+                style={{cursor: 'pointer'}}
             >
               {tab.label}
               {activeTab === tab.id && (

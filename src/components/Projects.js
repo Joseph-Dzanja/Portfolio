@@ -14,7 +14,7 @@ export const projects = [
   {
     id: 2,
     name: "LUANAR official website",
-    description: "Offical website for the Lilongwe University of Agriculture and Natural Resources. I was part of the team in developing this website",
+    description: "Official website for the Lilongwe University of Agriculture and Natural Resources. I was part of the team in developing this website",
     stack: ["HTML", "BootStrap", "PHP"],
     link: "https://luanar.ac.mw",
   },
@@ -73,7 +73,7 @@ export default function Projects() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gray-800 hover:bg-gray-700 transition rounded-2xl p-6 shadow-lg hover:shadow-xl border border-gray-700 flex flex-col justify-between min-h-[250px]"
+              className="group bg-gray-800 hover:bg-gray-700 transition rounded-2xl p-6 shadow-lg hover:shadow-xl border border-gray-700 flex flex-col justify-between min-h-[250px] cursor-pointer transform hover:scale-105"
             >
               <div>
                 <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition">

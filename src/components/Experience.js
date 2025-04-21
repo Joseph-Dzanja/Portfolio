@@ -29,7 +29,7 @@ export default function Experience() {
           <p className="text-base text-gray-300">
             Volunteered at the Lilongwe University of Agriculture and Natural
             Resources, providing support in ICT operations. Assisted with
-            software installations, hardware troubleshooting, and general tech
+            software development, software installations, hardware troubleshooting, and general tech
             support for staff and students.
           </p>
         </li>
@@ -44,7 +44,7 @@ export default function Experience() {
             Graduated with distinction from the Malawi University of Science and
             Technology. Gained a strong foundation in programming, information
             systems, cybersecurity, and database management. Completed various
-            personal projects ranging from games to management systems.
+            personal projects ranging from simple games to complex systems.
           </p>
         </li>
 
@@ -56,8 +56,8 @@ export default function Experience() {
           </h3>
           <p className="text-base text-gray-300">
             Continuously learning and building tools and websites using
-            technologies like React, Vue, Tailwind CSS, Node.js, and Python.
-            Exploring data analysis, mobile development, and security best
+            technologies like Next.js, Vue, Tailwind CSS, Node.js, and PHP.
+            Exploring artificial intelligence, mobile development, and security best
             practices.
           </p>
         </li>
