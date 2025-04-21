@@ -20,7 +20,7 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="text-4xl md:text-5xl font-extrabold leading-tight"
         >
-          I'm <span className="text-gray-400">Joseph Dzanja</span><br />
+          I&apos;m <span className="text-gray-400">Joseph Dzanja</span><br />
           A Passionate <span className="text-gray-500">Developer</span>
         </motion.h1>
 
