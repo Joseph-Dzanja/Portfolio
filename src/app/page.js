@@ -15,7 +15,7 @@ export default function Home() {
 
       <section
         id="home"
-        className="min-h-screen flex items-center justify-center bg-cover bg-center px-4 sm:px-12 md:px-24 lg:justify-start lg:px-60"
+        className="pt-[80px] min-h-screen flex items-center justify-center bg-cover bg-center px-4 sm:px-12 md:px-24 lg:justify-start lg:px-60"
         style={{
           backgroundImage: `url('/flat-lay-workstation-with-copy-space-laptop-min.jpg')`,
         }}
