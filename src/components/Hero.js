@@ -6,7 +6,7 @@ export default function Hero() {
       <p className="text-lg text-gray-300">Hi There!</p>
 
       <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-        I am <span className="text-gray-500">Joseph Harrison Dzanja</span><br />
+        I am <span className="text-gray-500">Joseph Dzanja</span><br />
         A Passionate <span className="text-gray-400">Developer!</span>
       </h1>
 
