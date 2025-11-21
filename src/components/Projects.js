@@ -53,6 +53,13 @@ export const projects = [
     stack: ["HTML", "CSS", "JavaScript"],
     link: "https://jhdzanja.netlify.app",
   },
+  {
+    id: 8,
+    name: "Mitra Helpdesk System",
+    description: "A helpdesk ticketing system for managing and tracking IT support requests within an organization. Features ticket creation, assignment, status updates, and reporting.",
+    stack: ["Next.js", "Tailwind CSS", "FastAPI"],
+    link: "https://helpdesk.mitra.mw",
+  },
 ];
 
 
@@ -61,7 +68,7 @@ export default function Projects() {
     <div id="projects" className="py-16 px-4 sm:px-8 md:px-16 bg-gray-900 text-white">
       <h1 className="pb-4 text-2xl">Projects</h1>
       <div className="w-full border-b border-gray-600 mb-8">
-        <div className="-mb-[1px] inline-block border-b-2 border-blue-500 px-4 py-2 text-xl font-semibold">
+        <div className="-mb-px inline-block border-b-2 border-blue-500 px-4 py-2 text-xl font-semibold">
           Featured
         </div>
       </div>
