@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "interactive-portfolio": {
+      "source": "sickn33/agentic-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/interactive-portfolio/SKILL.md",
+      "computedHash": "ff7bce1258f83a3c9a7977f0b274ef7cef9999afab30128b8baa759d334d5487"
+    }
+  }
+}

@@ -1,60 +1,71 @@
 import Image from "next/image";
+import { FadeInOnScroll } from "./FadeInOnScroll";
+
+const info = [
+  { label: "Name", value: "Joseph Dzanja" },
+  { label: "From", value: "Lilongwe, Malawi" },
+  { label: "Email", value: "jhdzanja@gmail.com" },
+  { label: "Website", value: "jhdzanja.com" },
+  { label: "Phone", value: "+265 999-34-21-66" },
+  { label: "Phone", value: "+265 887-36-55-79" },
+];
 
 export default function About() {
   return (
-    <div className="px-4 py-8">
-      <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto">
-        {/* Content */}
-        <div className="flex-1 text-white space-y-4">
-          <p>
-            I’m a Software Developer with a passion for
-            building seamless digital experiences. I specialize in both
-            front-end and back-end development, working with technologies like
-            JavaScript, React, Next.js, Vue, Node.js, and SQL to create dynamic and
-            user-friendly applications.
-          </p>
-          <p>
-            I enjoy writing clean, efficient code and designing intuitive
-            interfaces that make technology more accessible. From web apps to
-            management platforms, I focus on blending functionality with
-            aesthetics to deliver impactful solutions. I’m always learning and
-            pushing my skills to stay ahead in the ever-evolving tech landscape,
-            turning ideas into reality with every project.
-          </p>
-
-          <hr className="my-4 border-gray-300" />
-
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-sm">
-            <div>
-              <h1 className="font-semibold">Phone</h1>
-              <p>
-                +265 999-34-21-66
-                <br />
-                +265 887-36-55-79
-              </p>
-            </div>
-            <div>
-              <h1 className="font-semibold">Email</h1>
-              <p>jhdzanja@gmail.com</p>
-            </div>
-            <div>
-              <h1 className="font-semibold">Website</h1>
-              <p>jhdzanja.com</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Image */}
-        <div className="w-full max-w-xs md:max-w-sm flex-shrink-0">
+    <section id="about" className="bg-ink py-24">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <FadeInOnScroll>
           <Image
             src="/k.jpg"
-            alt="My-photo"
-            width={400}
-            height={400}
-            className="rounded-xl object-cover w-full h-auto"
+            alt="Joseph Dzanja"
+            width={560}
+            height={560}
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="aspect-square w-full object-cover object-top"
           />
-        </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delayOrder={1}>
+          <p className="font-semibold text-accent">Who am I?</p>
+          <h2 className="mt-2 text-2xl font-bold leading-snug md:text-3xl">
+            I’m Joseph Dzanja, a Software Developer
+          </h2>
+          <div className="mt-5 space-y-4 text-sm leading-relaxed text-gray-400 md:text-base">
+            <p>
+              I’m a Software Developer with a passion for building seamless digital experiences. I
+              specialize in both front-end and back-end development, working with technologies like
+              JavaScript, React, Next.js, Vue, Node.js, and SQL to create dynamic and user-friendly
+              applications.
+            </p>
+            <p>
+              I enjoy writing clean, efficient code and designing intuitive interfaces that make
+              technology more accessible. From web apps to management platforms, I focus on blending
+              functionality with aesthetics to deliver impactful solutions. I’m always learning and
+              pushing my skills to stay ahead in the ever-evolving tech landscape, turning ideas into
+              reality with every project.
+            </p>
+          </div>
+
+          <hr className="my-6 border-white/15" />
+
+          <dl className="grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+            {info.map((item, i) => (
+              <div key={i} className="flex gap-3">
+                <dt className="w-16 shrink-0 font-semibold">{item.label}:</dt>
+                <dd className="min-w-0 break-words text-gray-400">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <a
+            href="/Joseph_Dzanja_CV.pdf"
+            download
+            className="mt-8 inline-block rounded bg-accent px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
+          >
+            Download CV
+          </a>
+        </FadeInOnScroll>
       </div>
-    </div>
+    </section>
   );
 }

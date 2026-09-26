@@ -1,34 +1,37 @@
-'use client';
-import { FadeInOnScroll } from './FadeInOnScroll';
-import { CheckCircle } from 'lucide-react';
+import {
+  Puzzle,
+  Layers,
+  GitBranch,
+  Users,
+  MonitorSmartphone,
+  Cloud,
+  PenTool,
+  Database,
+} from 'lucide-react';
 
-const Skills = () => {
-  const skills = [
-    'Problem Solving',
-    'Full Stack Development',
-    'Version Control (Git)',
-    'Team Collaboration',
-    'Responsive Design',
-    'Cloud Services',
-    'UI/UX Design',
-    'Database Management',
-  ];
+const skills = [
+  { name: 'Problem Solving', icon: Puzzle },
+  { name: 'Full Stack Development', icon: Layers },
+  { name: 'Version Control (Git)', icon: GitBranch },
+  { name: 'Team Collaboration', icon: Users },
+  { name: 'Responsive Design', icon: MonitorSmartphone },
+  { name: 'Cloud Services', icon: Cloud },
+  { name: 'UI/UX Design', icon: PenTool },
+  { name: 'Database Management', icon: Database },
+];
 
+export default function Skills() {
   return (
-    <FadeInOnScroll>
-      <div className="flex flex-wrap justify-center gap-6">
-        {skills.map((skill) => (
-          <div
-            key={skill}
-            className="bg-white/60 backdrop-blur-md text-gray-800 px-6 py-5 shadow-md border border-gray-300 rounded-2xl hover:shadow-lg hover:scale-[1.03] transition-all duration-300 text-center text-base font-medium w-full sm:w-[45%] md:w-[30%] lg:w-[22%] flex items-center justify-center gap-2"
-          >
-            <CheckCircle className="text-blue-600 w-5 h-5" />
-            <span>{skill}</span>
-          </div>
-        ))}
-      </div>
-    </FadeInOnScroll>
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {skills.map(({ name, icon: Icon }) => (
+        <li
+          key={name}
+          className="flex items-center gap-3 rounded bg-tile px-5 py-4 text-sm font-medium transition-colors hover:bg-[#2a2a2a] md:text-base"
+        >
+          <Icon aria-hidden="true" className="size-5 shrink-0 text-accent" />
+          {name}
+        </li>
+      ))}
+    </ul>
   );
-};
-
-export default Skills;
+}

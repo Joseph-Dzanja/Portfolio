@@ -75,25 +75,21 @@ const technologies = [
 
 export default function Languages() {
   return (
-    <div className="w-11/12 max-w-5xl mx-auto mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-black">
-      {technologies.map((tech, index) => (
-        <div
-          key={index}
-          className="py-2 px-4 bg-gray-50 rounded-lg flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer shadow-sm animate-float"
+    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {technologies.map((tech) => (
+        <li
+          key={tech.name}
+          className="flex items-center gap-4 rounded bg-tile px-5 py-3 text-sm font-medium transition-colors hover:bg-[#2a2a2a] md:text-base"
         >
-          <div className="relative w-12 h-12">
-            <Image
-              src={tech.src}
-              alt={tech.name}
-              layout="fill"
-              objectFit="contain"
-              unoptimized
-            />
-          </div>
-          <h4 className="text-sm font-medium">{tech.name}</h4>
-        </div>
+          {/* Light chip so dark logos (Express, Next.js) stay visible */}
+          <span className="relative size-10 shrink-0 rounded-full bg-white p-2">
+            <span className="relative block size-full">
+              <Image src={tech.src} alt="" fill className="object-contain" unoptimized />
+            </span>
+          </span>
+          {tech.name}
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
-

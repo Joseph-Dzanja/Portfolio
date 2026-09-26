@@ -4,10 +4,10 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-export function FadeInOnScroll({ children, delayOrder = 0 }) {
+export function FadeInOnScroll({ children, delayOrder = 0, className }) {
   const controls = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (inView) {
@@ -35,6 +35,7 @@ export function FadeInOnScroll({ children, delayOrder = 0 }) {
       animate={controls}
       initial="hidden"
       exit="hidden"
+      className={className}
     >
       {children}
     </motion.div>

@@ -1,20 +1,40 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+
+const links = ["Home", "About", "Skills", "Experience", "Projects", "Contact"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsOpen(prev => !prev);
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // Highlight the link for the section in view.
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    links.forEach((l) => {
+      const el = document.getElementById(l.toLowerCase());
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
-    const handleClickOutside = e => {
+    const handleClickOutside = (e) => {
       if (
         menuRef.current &&
         !menuRef.current.contains(e.target) &&
@@ -23,70 +43,78 @@ export default function Navbar() {
         setIsOpen(false);
       }
     };
+    const handleKey = (e) => e.key === "Escape" && setIsOpen(false);
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKey);
+    };
   }, []);
 
-  return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-black/20 sm:px-18 px-6 py-4 flex items-center justify-between h-[80px]">
-      {/* Profile Picture */}
-      <div className="flex items-center gap-3">
-        <Image
-          src="/passport.jpg"
-          alt="Profile"
-          width={50}
-          height={50}
-          className="rounded-full object-cover"
-        />
-      </div>
+  const linkClass = (id) =>
+    `transition-colors ${active === id ? "text-accent" : "text-gray-200 hover:text-accent"}`;
 
-      {/* Right Side */}
-      <div className="flex items-center gap-4">
-        <a
-          href="/Joseph Dzanja Curriculum Vitae.pdf"
-          download
-          className="border border-white text-white px-4 py-2 rounded-md text-sm hover:bg-white hover:text-black transition"
-        >
-          Curriculum Vitae | CV
+  return (
+    <nav
+      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
+        scrolled || isOpen ? "bg-ink/95 shadow-lg shadow-black/30 backdrop-blur-sm" : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+        <a href="#home" className="text-2xl font-bold tracking-tight">
+          Dzanja<span className="text-accent">.</span>
         </a>
 
-        {/* Menu Icon */}
-        <motion.button
+        <ul className="hidden items-center gap-8 text-sm font-medium md:flex">
+          {links.map((text) => {
+            const id = text.toLowerCase();
+            return (
+              <li key={text}>
+                <a href={`#${id}`} className={linkClass(id)} aria-current={active === id ? "true" : undefined}>
+                  {text}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+
+        <button
           ref={buttonRef}
-          onClick={toggleMenu}
-          animate={{ rotate: isOpen ? 90 : 0, scale: isOpen ? 1.2 : 1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          className="text-white text-2xl focus:outline-none sm:text-3xl md:text-4xl" // Increase size for larger screens
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          className="cursor-pointer text-3xl text-white md:hidden"
         >
-          <HiOutlineMenuAlt3 />
-        </motion.button>
+          {isOpen ? <HiX /> : <HiOutlineMenuAlt3 />}
+        </button>
       </div>
 
-      {/* Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             ref={menuRef}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            id="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full right-4 mt-2 w-56 bg-black/90 text-white p-5 rounded-xl shadow-xl z-40"
+            className="overflow-hidden border-t border-white/10 bg-ink md:hidden"
           >
-            <ul className="space-y-3 text-sm font-medium sm:text-base md:text-lg"> {/* Increase font size */}
-              {["Home", "About", "Skills", "Experience", "Projects", "Contact"].map(
-                text => (
+            <ul className="px-6 py-4">
+              {links.map((text) => {
+                const id = text.toLowerCase();
+                return (
                   <li key={text}>
-                    <a
-                      href={`#${text.toLowerCase()}`}
-                      className="block hover:text-sky-400 transition-colors"
-                    >
+                    <a href={`#${id}`} onClick={() => setIsOpen(false)} className={`block py-3 font-medium ${linkClass(id)}`}>
                       {text}
                     </a>
                   </li>
-                )
-              )}
+                );
+              })}
             </ul>
           </motion.div>
         )}

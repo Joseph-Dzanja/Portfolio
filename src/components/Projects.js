@@ -1,7 +1,8 @@
 'use client';
 
+import { FolderGit2, ArrowUpRight } from 'lucide-react';
 import { FadeInOnScroll } from './FadeInOnScroll';
-import Link from 'next/link';
+import SectionTitle from './SectionTitle';
 
 export const projects = [
   {
@@ -62,48 +63,59 @@ export const projects = [
   },
 ];
 
+const hasLink = (link) => link && link !== '#';
+
+function Card({ project }) {
+  return (
+    <>
+      <FolderGit2 aria-hidden="true" className="size-8 text-accent" />
+      <h3 className="mt-5 text-lg font-semibold transition-colors group-hover:text-accent">
+        {project.name}
+      </h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-400">{project.description}</p>
+      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Built with">
+        {project.stack.map((tech) => (
+          <li key={tech} className="rounded bg-white/5 px-2.5 py-1 text-xs text-gray-300">
+            {tech}
+          </li>
+        ))}
+      </ul>
+      {hasLink(project.link) && (
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent">
+          View Project
+          <ArrowUpRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
+      )}
+    </>
+  );
+}
 
 export default function Projects() {
-  return (
-    <div id="projects" className="py-16 px-4 sm:px-8 md:px-16 bg-gray-900 text-white">
-      <h1 className="pb-4 text-2xl">Projects</h1>
-      <div className="w-full border-b border-gray-600 mb-8">
-        <div className="-mb-px inline-block border-b-2 border-blue-500 px-4 py-2 text-xl font-semibold">
-          Featured
-        </div>
-      </div>
+  const tile = 'group flex h-full flex-col rounded bg-tile p-7 transition-colors hover:bg-[#2a2a2a]';
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <FadeInOnScroll key={project.id} delayOrder={index}>
-            <Link
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-gray-800 hover:bg-gray-700 transition rounded-2xl p-6 shadow-lg hover:shadow-xl border border-gray-700 flex flex-col justify-between min-h-[250px] cursor-pointer transform hover:scale-105"
-            >
-              <div>
-                <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition">
-                  {project.name}
-                </h3>
-                <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-              <div className="mt-4 pt-4 border-t border-gray-700 text-sm text-gray-300 flex flex-wrap gap-2">
-                {project.stack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="bg-gray-700 text-xs px-2 py-1 rounded-full text-white"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          </FadeInOnScroll>
-        ))}
+  return (
+    <section id="projects" className="bg-band py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionTitle ghost="Portfolio">Projects</SectionTitle>
+
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <li key={project.id} className="h-full">
+              <FadeInOnScroll delayOrder={index % 3} className="h-full">
+                {hasLink(project.link) ? (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className={tile}>
+                    <Card project={project} />
+                  </a>
+                ) : (
+                  <div className={tile}>
+                    <Card project={project} />
+                  </div>
+                )}
+              </FadeInOnScroll>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   );
 }

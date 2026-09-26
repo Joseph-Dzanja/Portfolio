@@ -1,6 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+
+const contactInfo = [
+  { label: "Address", icon: MapPin, lines: ["PO Box 219, Lilongwe, Malawi"] },
+  { label: "Phone", icon: Phone, lines: ["+265 887 365 579", "+265 999 342 166"] },
+  { label: "E-mail", icon: Mail, lines: ["jhdzanja@gmail.com"] },
+];
+
+const field =
+  "w-full border-0 border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-gray-500 transition-colors focus:border-accent focus:outline-none focus-visible:outline-none";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -45,83 +56,77 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex justify-center flex-col md:flex-row w-4/5 m-auto py-16 gap-12">
-      {/* Contact Info */}
-      <div className="flex flex-col text-white max-w-md">
-        <h1 className="text-3xl font-bold mb-4">CONTACT</h1>
-        <p className="mb-8">
-          Feel free to reach out through any of the methods below.
-        </p>
+    <section id="contact" className="bg-ink py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionTitle ghost="Contact">Contact Me</SectionTitle>
 
-        <h2 className="text-xl font-semibold mt-4">Address</h2>
-        <p>PO Box 219, Lilongwe, Malawi</p>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+          {/* Contact Info */}
+          <div>
+            <p className="text-gray-400">
+              Feel free to reach out through any of the methods below.
+            </p>
+            <dl className="mt-10 space-y-8">
+              {contactInfo.map(({ label, icon: Icon, lines }) => (
+                <div key={label} className="flex gap-4">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-tile">
+                    <Icon aria-hidden="true" className="size-5 text-accent" />
+                  </span>
+                  <div>
+                    <dt className="font-semibold">{label}</dt>
+                    {lines.map((line) => (
+                      <dd key={line} className="mt-0.5 text-sm text-gray-400">
+                        {line}
+                      </dd>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-        <h2 className="text-xl font-semibold mt-4">Phone</h2>
-        <p>+265 887 365 579 / +265 999 342 166</p>
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="bg-band p-7 shadow-2xl md:p-10">
+            <h3 className="text-xl font-semibold">Contact Form</h3>
 
-        <h2 className="text-xl font-semibold mt-4">Email</h2>
-        <p>jhdzanja@gmail.com</p>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              <label className="block">
+                <span className="sr-only">Name</span>
+                <input name="name" value={form.name} onChange={handleChange} type="text" autoComplete="name" required className={field} placeholder="Name*" />
+              </label>
+              <label className="block">
+                <span className="sr-only">Email</span>
+                <input name="email" value={form.email} onChange={handleChange} type="email" autoComplete="email" required className={field} placeholder="Email*" />
+              </label>
+            </div>
+
+            <label className="mt-6 block">
+              <span className="sr-only">Subject</span>
+              <input name="subject" value={form.subject} onChange={handleChange} type="text" className={field} placeholder="Subject" />
+            </label>
+
+            <label className="mt-6 block">
+              <span className="sr-only">Message</span>
+              <textarea name="message" value={form.message} onChange={handleChange} rows="5" required className={`${field} resize-none`} placeholder="Message*" />
+            </label>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                disabled={status === "Sending..."}
+                className="cursor-pointer rounded bg-accent px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark disabled:cursor-wait disabled:opacity-70"
+              >
+                Send Message
+              </button>
+              {status && (
+                <p role="status" className="text-sm text-gray-300">
+                  {status}
+                </p>
+              )}
+            </div>
+          </form>
+        </div>
       </div>
-
-      {/* Contact Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-full max-w-lg md:shadow-2xl md:p-3"
-      >
-        <h1 className="text-center text-white font-semibold text-lg">
-          CONTACT FORM
-        </h1>
-
-        <input
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          type="text"
-          required
-          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
-          placeholder="Name*"
-        />
-
-        <input
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          type="email"
-          required
-          className="w-full p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
-          placeholder="Email*"
-        />
-
-        <input
-          name="subject"
-          value={form.subject}
-          onChange={handleChange}
-          type="text"
-          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 placeholder:text-gray-400"
-          placeholder="Subject"
-        />
-
-        <textarea
-          name="message"
-          value={form.message}
-          onChange={handleChange}
-          rows="6"
-          required
-          className="p-3 border-b border-gray-300 focus:outline-none focus:border-blue-600 resize-none placeholder:text-gray-400"
-          placeholder="Message"
-        ></textarea>
-
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition"
-        >
-          Submit
-        </button>
-
-        {status && (
-          <p className="text-center text-sm text-white mt-2">{status}</p>
-        )}
-      </form>
-    </div>
+    </section>
   );
 }
