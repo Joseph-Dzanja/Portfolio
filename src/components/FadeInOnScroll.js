@@ -1,40 +1,14 @@
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export function FadeInOnScroll({ children, delayOrder = 0, className }) {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [controls, inView]);
-
   return (
     <motion.div
-      ref={ref}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: delayOrder * 0.1,
-            duration: 0.6,
-            ease: 'easeOut',
-          },
-        },
-      }}
-      animate={controls}
-      initial="hidden"
-      exit="hidden"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ delay: delayOrder * 0.1, duration: 0.6, ease: 'easeOut' }}
       className={className}
     >
       {children}

@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { FadeInOnScroll } from "./FadeInOnScroll";
+import { profile } from "@/data/profile";
 
 const info = [
-  { label: "Name", value: "Joseph Dzanja" },
-  { label: "From", value: "Lilongwe, Malawi" },
-  { label: "Email", value: "jhdzanja@gmail.com" },
-  { label: "Website", value: "jhdzanja.com" },
-  { label: "Phone", value: "+265 999-34-21-66" },
-  { label: "Phone", value: "+265 887-36-55-79" },
+  { label: "Name", value: profile.name },
+  { label: "Based in", value: profile.location },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "Phone", value: profile.phone.display, href: profile.phone.href },
 ];
 
 export default function About() {
@@ -17,7 +16,7 @@ export default function About() {
         <FadeInOnScroll>
           <Image
             src="/k.jpg"
-            alt="Joseph Dzanja"
+            alt="Portrait of Joseph Dzanja"
             width={560}
             height={560}
             sizes="(min-width: 768px) 40vw, 100vw"
@@ -28,37 +27,44 @@ export default function About() {
         <FadeInOnScroll delayOrder={1}>
           <p className="font-semibold text-accent">Who am I?</p>
           <h2 className="mt-2 text-2xl font-bold leading-snug md:text-3xl">
-            I’m Joseph Dzanja, a Software Developer
+            I’m Joseph Dzanja, a full-stack Software Developer
           </h2>
           <div className="mt-5 space-y-4 text-sm leading-relaxed text-gray-400 md:text-base">
             <p>
-              I’m a Software Developer with a passion for building seamless digital experiences. I
-              specialize in both front-end and back-end development, working with technologies like
-              JavaScript, React, Next.js, Vue, Node.js, and SQL to create dynamic and user-friendly
-              applications.
+              I work at Mitra Systems in Malawi, building enterprise software end to end: Next.js
+              frontends, FastAPI and C# backends, and PostgreSQL databases. Most recently I led the
+              frontend of a help desk platform and maintain a cross-platform HR app for attendance
+              and leave.
             </p>
             <p>
-              I enjoy writing clean, efficient code and designing intuitive interfaces that make
-              technology more accessible. From web apps to management platforms, I focus on blending
-              functionality with aesthetics to deliver impactful solutions. I’m always learning and
-              pushing my skills to stay ahead in the ever-evolving tech landscape, turning ideas into
-              reality with every project.
+              Outside work I build software for small businesses, like a poultry farm management
+              system that handles feed calculations, batch inventory and business planning. I have a
+              BSc in Computer Systems and Security (with Distinction) from MUST, so I care about
+              getting authentication and access control right, not just the UI.
             </p>
           </div>
 
           <hr className="my-6 border-white/15" />
 
           <dl className="grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
-            {info.map((item, i) => (
-              <div key={i} className="flex gap-3">
-                <dt className="w-16 shrink-0 font-semibold">{item.label}:</dt>
-                <dd className="min-w-0 break-words text-gray-400">{item.value}</dd>
+            {info.map((item) => (
+              <div key={item.label} className="flex gap-3">
+                <dt className="w-20 shrink-0 font-semibold">{item.label}:</dt>
+                <dd className="min-w-0 break-words text-gray-400">
+                  {item.href ? (
+                    <a href={item.href} className="transition-colors hover:text-accent">
+                      {item.value}
+                    </a>
+                  ) : (
+                    item.value
+                  )}
+                </dd>
               </div>
             ))}
           </dl>
 
           <a
-            href="/Joseph_Dzanja_CV.pdf"
+            href={profile.cv}
             download
             className="mt-8 inline-block rounded bg-accent px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
           >

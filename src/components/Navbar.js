@@ -2,8 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
-
-const links = ["Home", "About", "Skills", "Experience", "Projects", "Contact"];
+import { navLinks as links } from "@/data/profile";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

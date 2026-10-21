@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import SocialLinks from "./SocialLinks";
+import { profile } from "@/data/profile";
 
 const roles = ["Software Developer", "Full Stack Developer", "Web Developer"];
 
 const details = [
-  { label: "Email", value: "jhdzanja@gmail.com", href: "mailto:jhdzanja@gmail.com" },
-  { label: "Phone", value: "+265-88-736-55-79", href: "tel:+265887365579" },
-  { label: "Location", value: "Lilongwe, Malawi" },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "Phone", value: profile.phone.display, href: profile.phone.href },
+  { label: "Location", value: profile.location },
 ];
 
 // Types each role out, pauses, deletes it, then moves to the next.
@@ -77,15 +79,22 @@ export default function Hero() {
               <span className="caret ml-0.5 text-accent">|</span>
             </span>
           </p>
-          <p className="mt-5 max-w-md text-gray-300 md:text-gray-400">
-            I build elegant, efficient, and user-focused digital experiences.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded bg-accent px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
-          >
-            Contact Me
-          </a>
+          <p className="mt-5 max-w-md text-gray-300 md:text-gray-400">{profile.tagline}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#projects"
+              className="inline-block rounded bg-accent px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
+            >
+              View My Work
+            </a>
+            <a
+              href="#contact"
+              className="inline-block rounded border border-white/30 px-7 py-3 text-sm font-medium text-white transition-colors hover:border-accent hover:text-accent"
+            >
+              Contact Me
+            </a>
+          </div>
+          <SocialLinks className="mt-8" />
         </div>
       </div>
 
