@@ -1,5 +1,5 @@
 // Single source of truth for personal and contact details.
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://jhdzanja.com";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.jdzanja.me";
 
 export const profile = {
   name: "Joseph Dzanja",

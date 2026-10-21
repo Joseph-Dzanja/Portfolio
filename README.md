@@ -39,7 +39,7 @@ Create `.env.local`:
 ```bash
 EMAIL_USER=you@gmail.com        # Gmail account that sends and receives contact form mail
 EMAIL_PASS=xxxxxxxxxxxxxxxx     # Gmail app password, not your account password
-NEXT_PUBLIC_SITE_URL=https://jhdzanja.com   # used for canonical URLs, sitemap and OG tags
+NEXT_PUBLIC_SITE_URL=https://www.jdzanja.me   # used for canonical URLs, sitemap and OG tags
 ```
 
 ## Deployment
