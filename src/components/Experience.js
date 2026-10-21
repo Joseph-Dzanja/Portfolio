@@ -3,19 +3,25 @@ import { FadeInOnScroll } from "./FadeInOnScroll";
 
 const experience = [
   {
+    date: "June 2025 – Present",
+    title: "Software Developer – Mitra Systems Limited, Blantyre, Malawi",
+    description:
+      "Develop full-stack enterprise applications across the frontend, backend, database, and API layers using Next.js, FastAPI, Python, C#, and PostgreSQL. Lead frontend development of a Help Desk Management System (ticketing, agent administration, assignment workflows, authentication, and a knowledge base) and maintain a cross-platform HR mobile app covering attendance, tasks, and leave requests. Contribute to architecture and feature design, run software testing and UAT, and support project coordination and planning across teams.",
+  },
+  {
     date: "2024 – Present",
     title: "Freelance Web Developer",
     description:
       "Built a professional web application for a client in collaboration with a friend. Handled both frontend and backend development using Vue 3, Node.js, Express, and MySQL. Implemented features like role-based access, batch inventory management, and business planning.",
   },
   {
-    date: "2024",
+    date: "February 2024 – May 2025",
     title: "ICT Volunteer – LUANAR",
     description:
       "Volunteered at the Lilongwe University of Agriculture and Natural Resources, providing support in ICT operations. Assisted with software development, software installations, hardware troubleshooting, and general tech support for staff and students.",
   },
   {
-    date: "2021 – 2024",
+    date: "2019 – 2024",
     title: "BSc in Computer Systems and Security",
     description:
       "Graduated with distinction from the Malawi University of Science and Technology. Gained a strong foundation in programming, information systems, cybersecurity, and database management. Completed various personal projects ranging from simple games to complex systems.",
